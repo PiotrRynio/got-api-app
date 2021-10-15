@@ -19,11 +19,12 @@ export const theme: Theme = {
     xxl: '1.5px',
   },
   colors: {
-    primary: '#4EADC5',
+    primary: '#67331E',
+    secondary: '#B9540C',
     darkHard: '#000000',
     darkMedium: '#121212',
     lightSoft: '#aaa',
-    lightMedium: '#E0E0E0',
+    lightMedium: '#FCFEF0',
     lightHard: '#FFF',
 
     redMedium: '#DE212B',

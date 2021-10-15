@@ -45,6 +45,7 @@ export type Theme = {
     lightHard: string;
     lightSoft: string;
     primary: string;
+    secondary: string;
     lightMedium: string;
   };
   fontWeight: {
