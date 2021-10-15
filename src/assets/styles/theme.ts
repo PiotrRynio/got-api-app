@@ -22,9 +22,10 @@ export const theme: Theme = {
     primary: '#4EADC5',
     darkHard: '#000000',
     darkMedium: '#121212',
-    lightSoft: '#E0E0E0',
-    lightMedium: '#324b72',
+    lightSoft: '#aaa',
+    lightMedium: '#E0E0E0',
     lightHard: '#FFF',
+
     redMedium: '#DE212B',
   },
   fontFamily: {
