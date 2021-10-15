@@ -4,6 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import { GlobalStyles } from 'assets/styles/GlobalStyles';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const InitialHelmet = () => (
   <Helmet>
@@ -14,15 +17,17 @@ const InitialHelmet = () => (
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => {
   return (
-    <HelmetProvider>
-      <InitialHelmet />
-      <ThemeProvider theme={theme}>
-        <Router>
-          <GlobalStyles theme={theme} />
-          {children}
-        </Router>
-      </ThemeProvider>{' '}
-    </HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <InitialHelmet />
+        <ThemeProvider theme={theme}>
+          <Router>
+            <GlobalStyles theme={theme} />
+            {children}
+          </Router>
+        </ThemeProvider>{' '}
+      </HelmetProvider>
+    </QueryClientProvider>
   );
 };
 
