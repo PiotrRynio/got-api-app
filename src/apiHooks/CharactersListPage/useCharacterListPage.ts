@@ -17,11 +17,11 @@ export const useCharacterListPage = ({
   useQuery(
     [`CharacterListPage-${page}-${pageSize}`],
     async () => {
-      const response = await fetch(`${API_URL}/characters?page=${page}&pageSize=${pageSize}`);
-      await validateResponse(response);
-      const fetchedData = await response.json();
-      // const fetchedData = fakeData;
-      console.log(fetchedData);
+      // const response = await fetch(`${API_URL}/characters?page=${page}&pageSize=${pageSize}`);
+      // await validateResponse(response);
+      // const fetchedData = await response.json();
+      const fetchedData = fakeData;
+      // console.log(fetchedData);
 
       //TODO: fix for fetchedData after finish app
       return fetchedData.map((characterListPageItem: CharacterListPageItemDto) => ({
