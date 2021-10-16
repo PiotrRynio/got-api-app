@@ -52,17 +52,17 @@ describe('Api useHouseDetails Hooks tests', () => {
 
       // then
       const correctHouseDetailsItem: HouseDetailsItemType = {
-        name: 'House Ashwood',
-        region: 'The North',
-        coatOfArms: undefined,
-        words: undefined,
-        titles: [],
-        seats: [],
+        name: 'House Ashford of Ashford',
+        region: 'The Reach',
+        coatOfArms: 'Tenny, a sun in splendour beneath a chevron inverted argent',
+        words: 'Our Sun Shines Bright',
+        titles: ['Lord of Ashford'],
+        seats: ['Ashford'],
         hasDiedOut: false,
         hasOverlord: true,
         numberOfCadetBranches: 0,
       };
-      expect(result.current.data).toStrictEqual(correctHouseDetailsItem);
+      expect(result.current.data).toStrictEqual({ houseDetailsItem: correctHouseDetailsItem });
     });
   });
 });
