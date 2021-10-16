@@ -8,7 +8,7 @@ export const CharacterListTableHeader = () => {
   return (
     <Wrapper>
       {headersText.map((headerText) => (
-        <TableCell>
+        <TableCell key={headerText}>
           <Typography typographyTag={TypographyTag.HEADING_4}>{headerText}</Typography>
         </TableCell>
       ))}

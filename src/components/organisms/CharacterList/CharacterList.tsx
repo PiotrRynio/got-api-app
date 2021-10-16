@@ -1,20 +1,26 @@
 import React from 'react';
-import { useCharacterListPage } from 'hooks/CharactersListPage/useCharacterListPage';
+import { useCharacterListPage } from 'apiHooks/CharactersListPage/useCharacterListPage';
 import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
 import { FetchingStatus } from 'components/atoms/FetchingStatus/FetchingStatus';
 import CharacterListItem from 'components/molecules/CharacterListItem/CharacterListItem';
 import { Wrapper } from './CharacterList.style';
 import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
+import PageSizeButton, { PageSizeButtonProps } from '../../atoms/Button/Button';
+import { usePageParams } from '../../../hooks/usePageParams';
 
 const CharacterList = () => {
+  const { pageSize, page } = usePageParams();
+
   const { isLoading, error, data } = useCharacterListPage({
-    page: 1,
-    pageSize: 50,
+    page: Number(page),
+    pageSize: Number(pageSize),
   });
 
-  if (data) {
-    console.log(data);
-  }
+  const buttonsPageSizesMenu: PageSizeButtonProps[] = [
+    { buttonPageSize: 10 },
+    { buttonPageSize: 25 },
+    { buttonPageSize: 50 },
+  ];
 
   return (
     <Wrapper>
@@ -24,6 +30,12 @@ const CharacterList = () => {
         data.map((characterListItemProps: CharacterListItemProps) => (
           <CharacterListItem {...characterListItemProps} key={characterListItemProps.id} />
         ))}
+      <div>
+        Page size:
+        {buttonsPageSizesMenu.map(({ buttonPageSize }) => (
+          <PageSizeButton buttonPageSize={buttonPageSize} key={buttonPageSize} />
+        ))}
+      </div>
     </Wrapper>
   );
 };

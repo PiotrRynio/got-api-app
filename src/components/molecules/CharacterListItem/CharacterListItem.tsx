@@ -15,7 +15,6 @@ const CharacterListItem = ({
   culture,
   allegiancesIds,
 }: CharacterListItemProps) => {
-  console.log(aliases);
   return (
     <Wrapper>
       <TableCell>

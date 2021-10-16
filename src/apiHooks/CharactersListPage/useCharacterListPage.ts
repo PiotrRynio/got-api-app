@@ -12,7 +12,7 @@ export enum ErrorCodes {
 
 export const useCharacterListPage = ({
   page = 1,
-  pageSize = 50,
+  pageSize = 25,
 }: UseCharacterListPageProps): UseQueryResult<CharacterListItemProps[]> =>
   useQuery(
     [`CharacterListPage-${page}-${pageSize}`],
