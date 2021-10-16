@@ -35,8 +35,8 @@ export const theme: Theme = {
   fontSize: {
     xxs: '8px',
     xs: '10px',
-    sm: '14px',
-    md: '16px',
+    sm: '12px',
+    md: '14px',
     lg: '20px',
     xl: '24px',
     xxl: '32px',
@@ -55,8 +55,8 @@ export const theme: Theme = {
     typography: {
       regular: css`
         font-weight: ${() => theme.fontWeight.regular};
-        font-size: ${() => theme.fontSize.md};
-        color: ${() => theme.colors.lightMedium};
+        font-size: ${() => theme.fontSize.xs};
+        color: ${() => theme.colors.darkMedium};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
       `,
