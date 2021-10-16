@@ -15,7 +15,7 @@ import { GenderMenu } from '../../molecules/GenderMenu/GenderMenu';
 
 const CharacterList = () => {
   const { pageSize, page, gender, culture } = usePageParams();
-  const { setPagesNumber } = useAppContext();
+  const { setPagesCount } = useAppContext();
 
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
@@ -23,8 +23,8 @@ const CharacterList = () => {
   });
 
   useEffect(() => {
-    setPagesNumber(data ? data.meta.pagesCount : 1);
-  }, [data, setPagesNumber]);
+    data && setPagesCount(data.meta.pagesCount);
+  }, [data, setPagesCount]);
 
   const genderFilter = (characterListItem: CharacterListItemProps) =>
     gender === characterListItem.gender || (gender !== 'Male' && gender !== 'Female');

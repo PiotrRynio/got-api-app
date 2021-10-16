@@ -6,7 +6,7 @@ import { Wrapper } from './Paginate.styles';
 
 const Paginate = () => {
   const { page, setPageParams } = usePageParams();
-  const { pagesNumber } = useAppContext();
+  const { pagesCount } = useAppContext();
 
   const onPageChangeHandle = ({ selected }: { selected: number }) => {
     setPageParams({ newPageNumber: selected + 1 });
@@ -14,14 +14,14 @@ const Paginate = () => {
 
   return (
     <>
-      {Boolean(pagesNumber) && (
+      {Boolean(pagesCount) && (
         <Wrapper role="navigation">
           <ReactPaginate
             previousLabel={'<'}
             nextLabel={'>'}
             breakLabel={'...'}
             breakClassName={'break-me'}
-            pageCount={pagesNumber}
+            pageCount={pagesCount}
             marginPagesDisplayed={1}
             pageRangeDisplayed={4}
             onPageChange={onPageChangeHandle}
