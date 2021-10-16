@@ -1,10 +1,11 @@
-export type CharactersListItemProps = {
+export type CharacterListItemProps = {
+  id: number;
   name: string | undefined;
-  aliases: string[] | [];
+  aliases: string[] | undefined;
   born: number | undefined;
   died: number | undefined;
   ageOfDeath: number | undefined;
   gender: 'Male' | 'Female';
   culture: string | undefined;
-  allegiancesUrl: string[] | [];
+  allegiancesIds: number[] | undefined;
 };

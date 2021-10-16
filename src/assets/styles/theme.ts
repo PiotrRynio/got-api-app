@@ -22,11 +22,11 @@ export const theme: Theme = {
     primary: '#67331E',
     secondary: '#B9540C',
     darkHard: '#000000',
-    darkMedium: '#121212',
-    lightSoft: '#aaa',
+    darkMedium: '#331C0E',
+    darkSoft: '#67331E',
+    lightSoft: '#FFF190',
     lightMedium: '#FCFEF0',
     lightHard: '#FFF',
-
     redMedium: '#DE212B',
   },
   fontFamily: {
@@ -77,8 +77,8 @@ export const theme: Theme = {
       `,
       heading4: css`
         font-size: ${() => theme.fontSize.md};
-        font-weight: ${() => theme.fontWeight.regular};
-        color: ${() => theme.colors.lightMedium};
+        font-weight: ${() => theme.fontWeight.bold};
+        color: ${() => theme.colors.primary};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
       `,

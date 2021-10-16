@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from 'react-query';
-import { CharactersListItemProps } from 'components/organisms/CharacterListItem/CharactersListItemProps';
+import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
 import { UseCharacterListPageProps } from './UseCharacterListPageProps';
 import { CharacterListPageItemDto } from './CharacterListPageItemDto';
 import { API_URL } from 'constant/apiUrl';
@@ -13,7 +13,7 @@ export enum ErrorCodes {
 export const useCharacterListPage = ({
   page = 1,
   pageSize = 50,
-}: UseCharacterListPageProps): UseQueryResult<CharactersListItemProps[]> =>
+}: UseCharacterListPageProps): UseQueryResult<CharacterListItemProps[]> =>
   useQuery(
     [`CharacterListPage-${page}-${pageSize}`],
     async () => {
@@ -24,8 +24,12 @@ export const useCharacterListPage = ({
 
       //TODO: fix for fetchedData after finish app
       return fetchedData.map((characterListPageItem: CharacterListPageItemDto) => ({
+        id: itemId(characterListPageItem.url),
         name: characterListPageItem.name === '' ? undefined : characterListPageItem.name,
-        aliases: characterListPageItem.aliases === [''] ? [] : characterListPageItem.aliases,
+        aliases:
+          characterListPageItem.aliases.length === 1 && characterListPageItem.aliases[0] === ''
+            ? undefined
+            : characterListPageItem.aliases,
         born: yearFromDateTextInformation(characterListPageItem.born),
         died: yearFromDateTextInformation(characterListPageItem.died),
         ageOfDeath: ageOfDeath(
@@ -34,7 +38,10 @@ export const useCharacterListPage = ({
         ),
         gender: characterListPageItem.gender === '' ? undefined : characterListPageItem.gender,
         culture: characterListPageItem.culture === '' ? undefined : characterListPageItem.culture,
-        allegiances: characterListPageItem.allegiances,
+        allegiancesIds:
+          allegiancesId(characterListPageItem.allegiances).length > 0
+            ? allegiancesId(characterListPageItem.allegiances)
+            : undefined,
       }));
     },
     {
@@ -52,7 +59,7 @@ const validateResponse = async (response: Response) => {
   }
 };
 
-const yearFromDateTextInformation = (dateTextInformation: string) => {
+const yearFromDateTextInformation = (dateTextInformation: string): number | undefined => {
   if (dateTextInformation === '') {
     return undefined;
   }
@@ -68,7 +75,7 @@ const yearFromDateTextInformation = (dateTextInformation: string) => {
   const bcYear = dateTextInformation.match(bcYearRegExp);
   if (bcYear) {
     const numberYearRegExp = /[0-9]{1,3}/i;
-    return Number(bcYear[0].match(numberYearRegExp));
+    return -Number(bcYear[0].match(numberYearRegExp));
   }
 
   return undefined;
@@ -78,3 +85,17 @@ const ageOfDeath = (
   yearOfDeath: number | undefined,
   yearOfBirth: number | undefined,
 ): number | undefined => (yearOfDeath && yearOfBirth ? yearOfDeath - yearOfBirth : undefined);
+
+const allegiancesId = (allegiancesUrls: string[]): (string | undefined)[] =>
+  allegiancesUrls.map((url) => itemId(url));
+
+const itemId = (url: string): string | undefined => {
+  const slashWithIdRegExp = /[/][0-9]{1,}$/i;
+  const slashWithId = url.match(slashWithIdRegExp);
+  if (!slashWithId) {
+    return undefined;
+  }
+  const idRegExp = /[0-9]{1,}$/i;
+  const id = url.match(idRegExp);
+  return id ? id[0] : undefined;
+};

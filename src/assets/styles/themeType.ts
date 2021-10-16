@@ -39,14 +39,15 @@ export type Theme = {
     normal: string;
   };
   colors: {
-    darkHard: string;
-    redMedium: string;
-    darkMedium: string;
-    lightHard: string;
-    lightSoft: string;
     primary: string;
     secondary: string;
+    darkHard: string;
+    darkMedium: string;
+    darkSoft: string;
+    lightSoft: string;
     lightMedium: string;
+    lightHard: string;
+    redMedium: string;
   };
   fontWeight: {
     light: string;

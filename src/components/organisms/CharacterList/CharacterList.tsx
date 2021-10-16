@@ -1,23 +1,31 @@
 import React from 'react';
-import { Wrapper } from './CharacterList.style';
 import { useCharacterListPage } from 'hooks/CharactersListPage/useCharacterListPage';
-import { data } from 'msw/lib/types/context';
+import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
+import { FetchingStatus } from 'components/atoms/FetchingStatus/FetchingStatus';
+import CharacterListItem from 'components/molecules/CharacterListItem/CharacterListItem';
+import { Wrapper } from './CharacterList.style';
+import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
 
-export type CharacterListProps = {};
+const CharacterList = () => {
+  const { isLoading, error, data } = useCharacterListPage({
+    page: 1,
+    pageSize: 50,
+  });
 
-const CharacterList = ({}: CharacterListProps) => {
-  const { isLoading, error, data } = useCharacterListPage({ page: 1, pageSize: 50 });
-
-  if (!isLoading) {
-    if (data) {
-      console.log(data);
-    }
-    if (error) {
-      console.log(error);
-    }
+  if (data) {
+    console.log(data);
   }
 
-  return <Wrapper>Characters List</Wrapper>;
+  return (
+    <Wrapper>
+      <CharacterListTableHeader />
+      {(error || isLoading) && <FetchingStatus error={error} isLoading={isLoading} />}
+      {data &&
+        data.map((characterListItemProps: CharacterListItemProps) => (
+          <CharacterListItem {...characterListItemProps} key={characterListItemProps.id} />
+        ))}
+    </Wrapper>
+  );
 };
 
 export default CharacterList;
