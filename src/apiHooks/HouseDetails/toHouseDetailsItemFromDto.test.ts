@@ -20,10 +20,10 @@ describe('toHouseDetailsItemFromDto', () => {
       seats: ['Ashford'],
       isDiedOut: false,
       isOverlord: true,
-      numberOfCadetBranches: 4,
+      numberOfCadetBranches: 0,
     };
 
-    expect(houseDetailsItem).toBe(correctHouseDetailsItem);
+    expect(houseDetailsItem).toStrictEqual(correctHouseDetailsItem);
   });
 });
 
