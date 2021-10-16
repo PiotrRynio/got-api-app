@@ -8,7 +8,7 @@ export const usePageParams = () => {
 
   const values = {
     page: String(parsedPageParams.page ?? '1'),
-    pageSize: String(parsedPageParams.page ?? '25'),
+    pageSize: String(parsedPageParams.pageSize ?? '25'),
   };
 
   const setPageParams = ({

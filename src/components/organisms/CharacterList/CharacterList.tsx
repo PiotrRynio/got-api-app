@@ -12,6 +12,9 @@ import Paginate from '../../molecules/Paginate/Paginate';
 const CharacterList = () => {
   const { pageSize, page } = usePageParams();
 
+  console.log(page);
+  console.log(pageSize);
+
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
     pageSize: Number(pageSize),
