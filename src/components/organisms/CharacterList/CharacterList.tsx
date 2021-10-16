@@ -23,8 +23,8 @@ const CharacterList = () => {
   });
 
   useEffect(() => {
-    data && data.meta && setPagesNumber(data.meta.pagesCount);
-  }, [data]);
+    setPagesNumber(data ? data.meta.pagesCount : 1);
+  }, [data, setPagesNumber]);
 
   const genderFilter = (characterListItem: CharacterListItemProps) =>
     gender === characterListItem.gender || (gender !== 'Male' && gender !== 'Female');
