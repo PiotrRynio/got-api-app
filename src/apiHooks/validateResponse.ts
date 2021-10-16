@@ -1,4 +1,7 @@
-import { ErrorCodes } from './HouseDetails/useHouseDetails.test';
+export enum ErrorCodes {
+  NETWORK_ERROR = 'NETWORK_ERROR',
+  NOT_FOUND = 'NOT_FOUND',
+}
 
 export const validateResponse = async (response: Response) => {
   if (!response.ok) {

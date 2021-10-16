@@ -6,11 +6,7 @@ import { API_URL } from 'constant/apiUrl';
 import { fakeData } from '../../mocks/FakeDto/FakeData';
 import parseLinkHeader from 'parse-link-header';
 import { toCharacterListItemPropsFromDto } from './toCharacterListItemPropsFromDto';
-
-export enum ErrorCodes {
-  NETWORK_ERROR = 'NETWORK_ERROR',
-  NOT_FOUND = 'NOT_FOUND',
-}
+import { validateResponse } from '../validateResponse';
 
 export const useCharacterListPage = ({
   page = 1,
@@ -26,10 +22,10 @@ export const useCharacterListPage = ({
       const linkHeader = response.headers.get('Link');
       const parsedLinkHeader = linkHeader ? parseLinkHeader(linkHeader) : undefined;
       const pagesCount = parsedLinkHeader ? parsedLinkHeader['last']['page'] : 0;
-      const fetchedData = await response.json();
       await validateResponse(response);
+      const fetchedData = await response.json();
+
       // TODO: Remove this
-      //
       // const pagesCount = 50;
       // const fetchedData = fakeData;
       // console.log(fetchedData);
@@ -41,13 +37,3 @@ export const useCharacterListPage = ({
       staleTime: 10000000, // TODO: reduce or delete value on production version
     },
   );
-
-const validateResponse = async (response: Response) => {
-  if (!response.ok) {
-    const errorResponse = await response.json();
-    if (errorResponse.status === 404) {
-      throw new Error(ErrorCodes.NOT_FOUND);
-    }
-    throw new Error(ErrorCodes.NETWORK_ERROR);
-  }
-};
