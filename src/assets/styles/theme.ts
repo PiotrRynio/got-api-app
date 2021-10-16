@@ -55,7 +55,7 @@ export const theme: Theme = {
     typography: {
       regular: css`
         font-weight: ${() => theme.fontWeight.regular};
-        font-size: ${() => theme.fontSize.xs};
+        font-size: ${() => theme.fontSize.md};
         color: ${() => theme.colors.darkMedium};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
@@ -63,7 +63,7 @@ export const theme: Theme = {
       overline: css`
         font-size: ${() => theme.fontSize.sm};
         font-weight: ${() => theme.fontWeight.regular};
-        color: ${() => theme.colors.lightMedium};
+        color: ${() => theme.colors.darkSoft};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
         text-transform: uppercase;
