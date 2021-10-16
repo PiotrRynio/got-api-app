@@ -1,17 +1,21 @@
 import React from 'react';
 import { useCharacterListPage } from 'apiHooks/CharactersListPage/useCharacterListPage';
-import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
+import { usePageParams } from 'hooks/usePageParams';
 import { FetchingStatus } from 'components/atoms/FetchingStatus/FetchingStatus';
+import PageSizeButton, {
+  PageSizeButtonProps,
+} from 'components/atoms/PageSizeButton/PageSizeButton';
+import CultureSearcher from 'components/atoms/CultureSearcher/CultureSearcher';
+import GenderButton, { GenderButtonProps } from 'components/atoms/GenderButton/GenderButton';
+import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
 import CharacterListItem from 'components/molecules/CharacterListItem/CharacterListItem';
-import { Wrapper } from './CharacterList.style';
 import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
-import PageSizeButton, { PageSizeButtonProps } from '../../atoms/PageSizeButton/PageSizeButton';
-import { usePageParams } from '../../../hooks/usePageParams';
 import Paginate from 'components/molecules/Paginate/Paginate';
-import GenderButton, { GenderButtonProps } from '../../atoms/GenderButton/GenderButton';
+import { Wrapper } from './CharacterList.style';
+import { normalizeAndSquashText } from '../../../utils/normalizeAndSquashText';
 
 const CharacterList = () => {
-  const { pageSize, page, gender } = usePageParams();
+  const { pageSize, page, gender, culture } = usePageParams();
 
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
@@ -33,6 +37,15 @@ const CharacterList = () => {
   const genderFilter = (characterListItem: CharacterListItemProps) =>
     gender === characterListItem.gender || (gender !== 'Male' && gender !== 'Female');
 
+  const cultureFilter = (characterListItem: CharacterListItemProps) =>
+    !culture ||
+    (characterListItem.culture &&
+      normalizeAndSquashText(characterListItem.culture).includes(
+        normalizeAndSquashText(culture),
+      )) ||
+    (!characterListItem.culture &&
+      normalizeAndSquashText('Unknown').includes(normalizeAndSquashText(culture)));
+
   return (
     <Wrapper>
       <CharacterListTableHeader />
@@ -40,6 +53,7 @@ const CharacterList = () => {
       {data &&
         data
           .filter(genderFilter)
+          .filter(cultureFilter)
           .map((characterListItem: CharacterListItemProps) => (
             <CharacterListItem {...characterListItem} key={characterListItem.id} />
           ))}
@@ -54,6 +68,10 @@ const CharacterList = () => {
         {genderButtonsMenu.map(({ gender }) => (
           <GenderButton gender={gender} key={gender} />
         ))}
+      </div>
+      <div>
+        Culture:
+        <CultureSearcher />
       </div>
       <Paginate />
     </Wrapper>

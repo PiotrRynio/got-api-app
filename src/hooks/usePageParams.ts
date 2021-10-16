@@ -10,21 +10,25 @@ export const usePageParams = () => {
     page: String(parsedPageParams.page ?? '1'),
     pageSize: String(parsedPageParams.pageSize ?? '25'),
     gender: String(parsedPageParams.gender ?? 'Any'),
+    culture: String(parsedPageParams.culture ?? ''),
   };
 
   const setPageParams = ({
     newPageNumber = 1,
     newPageSize,
     newGender,
+    newCulture,
   }: {
     newPageNumber?: number;
     newPageSize?: number;
     newGender?: string;
+    newCulture?: string;
   }) => {
     const newValues = {
       page: String(newPageNumber),
       pageSize: newPageSize ? String(newPageSize) : values.pageSize,
       gender: newGender ? String(newGender) : values.gender,
+      culture: newCulture || newCulture === '' ? String(newCulture) : values.culture,
     };
 
     const parsedNewValues = queryString.stringify(
