@@ -1,28 +1,26 @@
 import React, { createContext, useContext, useState } from 'react';
 
 type AppContextType = {
-  // pageSize: number;
-  // setPageSize: (newPagesNumber: number) => void;
+  pagesNumber: number;
+  setPagesNumber: (newPagesNumbers: number) => void;
 };
 
 const appContextDefaultValue = {
-  // pageSize: 25,
-  // setPageSize: (newPagesNumber: number) => {},
+  pagesNumber: 1,
+  setPagesNumber: (newPagesNumber: number) => {},
 };
 
 const AppContext = createContext<AppContextType>(appContextDefaultValue);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  // const [pageSize, setPageSize] = useState<number>(appContextDefaultValue.pageSize);
+  const [pagesNumber, setPagesNumber] = useState<number>(appContextDefaultValue.pagesNumber);
 
   return (
     <AppContext.Provider
-      value={
-        {
-          // pageSize,
-          // setPageSize,
-        }
-      }
+      value={{
+        pagesNumber,
+        setPagesNumber,
+      }}
     >
       {children}
     </AppContext.Provider>

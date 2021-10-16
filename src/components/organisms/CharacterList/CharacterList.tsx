@@ -7,6 +7,7 @@ import { Wrapper } from './CharacterList.style';
 import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
 import PageSizeButton, { PageSizeButtonProps } from '../../atoms/Button/Button';
 import { usePageParams } from '../../../hooks/usePageParams';
+import Paginate from '../../molecules/Paginate/Paginate';
 
 const CharacterList = () => {
   const { pageSize, page } = usePageParams();
@@ -36,6 +37,7 @@ const CharacterList = () => {
           <PageSizeButton buttonPageSize={buttonPageSize} key={buttonPageSize} />
         ))}
       </div>
+      <Paginate />
     </Wrapper>
   );
 };
