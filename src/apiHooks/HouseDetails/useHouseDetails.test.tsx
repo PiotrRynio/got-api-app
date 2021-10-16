@@ -1,9 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useHouseDetails } from './useHouseDetails';
-import { renderWithProviders } from '../../helpers/renderWithProviders';
 import { HouseDetailsItemType } from './HouseDetailsItemType';
-// import { useHouseDetails } from './useHouseDetails';
 
 const createWrapper = () => {
   // ✅ creates a new QueryClient for each test
@@ -20,7 +18,6 @@ describe('Api useHouseDetails Hooks tests', () => {
       const { result } = renderHook(() => useHouseDetails(8), {
         wrapper: createWrapper(),
       });
-      console.log(result);
 
       // then
       expect(result.current.isLoading).toBe(true);
@@ -32,11 +29,8 @@ describe('Api useHouseDetails Hooks tests', () => {
         wrapper: createWrapper(),
       });
 
-      console.log(result);
-
       // when
-      await waitFor(() => result.current.isSuccess, { timeout: 5000 });
-      console.log(result);
+      await waitFor(() => result.current.isSuccess);
 
       // then
       const { error, isLoading, isLoadingError, isSuccess } = result.current;
