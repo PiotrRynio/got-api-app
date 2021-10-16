@@ -3,7 +3,7 @@ import { toHouseDetailsItemFromDto } from './toHouseDetailsItemFromDto';
 import { HouseDetailsItemType } from './HouseDetailsItemType';
 
 describe('toHouseDetailsItemFromDto', () => {
-  it('should return correct data, if receive correct data', async () => {
+  it('should return correct data, if receive correct House Ashford of Ashford data', async () => {
     // given
     const houseDto: HouseDetailsDto = houseAshfordOfAshford;
 
@@ -18,8 +18,31 @@ describe('toHouseDetailsItemFromDto', () => {
       words: 'Our Sun Shines Bright',
       titles: ['Lord of Ashford'],
       seats: ['Ashford'],
-      isDiedOut: false,
-      isOverlord: true,
+      hasDiedOut: false,
+      hasOverlord: true,
+      numberOfCadetBranches: 0,
+    };
+
+    expect(houseDetailsItem).toStrictEqual(correctHouseDetailsItem);
+  });
+
+  it('should return correct data, if receive correct House Ashwood data', async () => {
+    // given
+    const houseDto: HouseDetailsDto = houseAshwood;
+
+    // when
+    const houseDetailsItem = toHouseDetailsItemFromDto(houseDto);
+
+    // then
+    const correctHouseDetailsItem: HouseDetailsItemType = {
+      name: 'House Ashwood',
+      region: 'The North',
+      coatOfArms: undefined,
+      words: undefined,
+      titles: [],
+      seats: [],
+      hasDiedOut: false,
+      hasOverlord: true,
       numberOfCadetBranches: 0,
     };
 
@@ -49,4 +72,23 @@ const houseAshfordOfAshford = {
     'https://www.anapioficeandfire.com/api/characters/895',
     'https://www.anapioficeandfire.com/api/characters/1812',
   ],
+};
+
+const houseAshwood = {
+  url: 'https://www.anapioficeandfire.com/api/houses/9',
+  name: 'House Ashwood',
+  region: 'The North',
+  coatOfArms: '',
+  words: '',
+  titles: [''],
+  seats: [''],
+  currentLord: '',
+  heir: '',
+  overlord: 'https://www.anapioficeandfire.com/api/houses/34',
+  founded: '',
+  founder: '',
+  diedOut: '',
+  ancestralWeapons: [''],
+  cadetBranches: [],
+  swornMembers: [],
 };
