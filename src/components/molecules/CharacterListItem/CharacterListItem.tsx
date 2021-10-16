@@ -36,16 +36,17 @@ const CharacterListItem = ({
         <Typography typographyTag={TypographyTag.REGULAR}>{gender}</Typography>
       </TableCell>
       <TableCell>
-        <Typography typographyTag={TypographyTag.REGULAR}>{culture}</Typography>
+        <Typography typographyTag={TypographyTag.REGULAR}>{culture || 'Unknown'}</Typography>
       </TableCell>
       <TableCell>
         <Typography typographyTag={TypographyTag.REGULAR}>
-          {allegiancesIds &&
-            allegiancesIds.map((id, index) => (
-              <Link to={`houses/${id}`} key={id}>
-                {`${id}${allegiancesIds?.length > index + 1 ? ', ' : ''}`}
-              </Link>
-            ))}
+          {allegiancesIds
+            ? allegiancesIds.map((id, index) => (
+                <Link to={`houses/${id}`} key={id}>
+                  {`${id}${allegiancesIds?.length > index + 1 ? ', ' : ''}`}
+                </Link>
+              ))
+            : 'No allegiances'}
         </Typography>
       </TableCell>
     </Wrapper>
