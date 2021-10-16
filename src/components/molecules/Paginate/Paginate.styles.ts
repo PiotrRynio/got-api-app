@@ -5,11 +5,10 @@ export const Wrapper = styled.nav`
   width: 100%;
   justify-content: center;
   align-content: center;
-  margin: 120px 0 166px;
+  margin: 20px 0 20px;
   ul {
     display: flex;
-    height: 56px;
-    gap: 16px;
+    gap: 4px;
   }
   li {
     ${({ theme }) => theme.mixins.typography.heading4};
@@ -18,8 +17,8 @@ export const Wrapper = styled.nav`
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 56px;
-    width: 56px;
+    height: 40px;
+    width: 40px;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
     font-weight: ${({ theme }) => theme.fontWeight.bold};
@@ -40,7 +39,7 @@ export const Wrapper = styled.nav`
   a {
     display: block;
     width: 100%;
-    line-height: 56px;
+    line-height: 40px;
     text-align: center;
   }
 `;
