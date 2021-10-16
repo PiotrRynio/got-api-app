@@ -10,8 +10,8 @@ import Paginate from 'components/molecules/Paginate/Paginate';
 import { Wrapper } from './CharacterList.style';
 import { normalizeAndSquashText } from 'utils/normalizeAndSquashText';
 import { useAppContext } from 'context/AppContext';
-import { PageSizeButtons } from '../../molecules/PageSizesButtonsMenu/PageSizesButtonsMenu';
-import { GenderButtonsMenu } from '../../molecules/GenderButtonsMenu/GenderButtonsMenu';
+import { PageSizeMenu } from '../../molecules/PageSizeMenu/PageSizeMenu';
+import { GenderMenu } from '../../molecules/GenderMenu/GenderMenu';
 
 const CharacterList = () => {
   const { pageSize, page, gender, culture } = usePageParams();
@@ -50,7 +50,7 @@ const CharacterList = () => {
   return (
     <Wrapper>
       <div>
-        <GenderButtonsMenu />
+        <GenderMenu />
       </div>
       <div>
         Culture:
@@ -60,7 +60,7 @@ const CharacterList = () => {
       <FetchingStatus error={error} isLoading={isLoading} />
       {characterListItems()}
       <div>
-        <PageSizeButtons />
+        <PageSizeMenu />
       </div>
       <Paginate />
     </Wrapper>
