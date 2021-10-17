@@ -40,13 +40,14 @@ Running this project locally
 ###### From the repo:
 
 1. Clone this project locally.
-2. Run npm install in your bash/command line.
-3. Run npm start in your bash/command line.
-4. Go to http://localhost:3000/ in your browser (or other from your bash/command line info).
+2. Run `npm install` in your bash/command line.
+3. Run `npm start` in your bash/command line.
+4. Go to `http://localhost:3000/` in your browser (or other from your bash/command line info).
 
 Others:
 
-1. Compiles and minifies for production npm build
+1. Compile and minify for production `npm build`
+2. Run all tests `npm test`
 
 ---
 
