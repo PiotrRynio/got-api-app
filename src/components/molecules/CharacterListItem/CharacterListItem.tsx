@@ -42,7 +42,13 @@ const CharacterListItem = ({
         <Typography typographyTag={TypographyTag.REGULAR}>
           {allegiancesIds
             ? allegiancesIds.map((id, index) => (
-                <Link to={`houses/${id}`} key={id}>
+                <Link
+                  to={`houses/${id}`}
+                  key={id}
+                  aria-label={`Link to the house of ${name || (aliases && aliases[0])}. It is ${
+                    index + 1
+                  } in order.`}
+                >
                   {`${id}${allegiancesIds?.length > index + 1 ? ', ' : ''}`}
                 </Link>
               ))

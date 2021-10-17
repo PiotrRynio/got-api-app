@@ -11,6 +11,8 @@ const server = setupServer(...handlers);
 beforeAll(() => {
   server.listen();
 });
-
-afterEach(() => server.resetHandlers());
+beforeEach(() => {});
+afterEach(() => {
+  server.resetHandlers();
+});
 afterAll(() => server.close());
