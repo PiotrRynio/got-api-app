@@ -17,13 +17,18 @@ export const Wrapper = styled.nav`
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
     font-weight: ${({ theme }) => theme.fontWeight.bold};
     background-color: transparent;
     cursor: pointer;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+      height: 40px;
+      width: 40px;
+    }
   }
   li.active {
     color: ${({ theme }) => theme.colors.secondary};
@@ -39,7 +44,11 @@ export const Wrapper = styled.nav`
   a {
     display: block;
     width: 100%;
-    line-height: 40px;
+    line-height: 30px;
     text-align: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+      line-height: 40px;
+    }
   }
 `;

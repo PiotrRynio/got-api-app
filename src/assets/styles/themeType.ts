@@ -32,6 +32,7 @@ export type Theme = {
     xl: string;
     md: string;
     sm: string;
+    xs: string;
     lg: string;
     xxl: string;
   };

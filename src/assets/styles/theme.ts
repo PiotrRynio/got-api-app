@@ -3,6 +3,7 @@ import { Theme } from './themeType';
 
 export const theme: Theme = {
   breakpoints: {
+    xs: '480px',
     sm: '560px',
     md: '768px',
     lg: '1024px',
