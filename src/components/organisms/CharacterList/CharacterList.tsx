@@ -17,6 +17,8 @@ const CharacterList = () => {
   const { pageSize, page, gender, culture } = usePageParams();
   const { setPagesCount } = useAppContext();
 
+  // TODO: Add culture filtering in API - now an empty table is returned after passing part of the culture name in the query
+
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
     pageSize: Number(pageSize),
