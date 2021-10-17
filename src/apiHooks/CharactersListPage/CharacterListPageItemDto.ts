@@ -4,7 +4,7 @@ export type CharacterListPageItemDto = {
   aliases: string[];
   born: string;
   died: string;
-  gender: string;
+  gender: 'Male' | 'Female';
   culture: string;
   allegiances: string[];
 };

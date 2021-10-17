@@ -16,7 +16,7 @@ export const toCharacterListItemPropsFromDto = (
     yearFromDateTextInformation(characterListPageItem.died),
     yearFromDateTextInformation(characterListPageItem.born),
   ),
-  gender: characterListPageItem.gender === 'Male' ? 'Male' : 'Female',
+  gender: characterListPageItem.gender,
   culture: characterListPageItem.culture === '' ? undefined : characterListPageItem.culture,
   allegiancesIds:
     allegiancesId(characterListPageItem.allegiances).length > 0
