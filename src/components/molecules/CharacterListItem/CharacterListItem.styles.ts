@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.div`
   width: 100%;
   min-height: 30px;
   display: inline-grid;
@@ -8,4 +8,4 @@ export const Wrapper = styled.section`
   border-bottom: 1px solid ${({ theme }) => theme.colors.darkSoft};
 `;
 
-export const TableCell = styled.section``;
+export const TableCell = styled.div``;
