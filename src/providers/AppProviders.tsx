@@ -4,14 +4,15 @@ import { theme } from 'assets/styles/theme';
 import { GlobalStyles } from 'assets/styles/GlobalStyles';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { AppProvider } from '../context/AppContext';
+import { AppProvider } from 'context/AppContext';
+import { primaryFonts } from 'assets/styles/fonts';
 
 const queryClient = new QueryClient();
 
 const InitialHelmet = () => (
   <Helmet>
-    <title>Rynio Piotr - My App</title>
-    <link rel="stylesheet" href="./../assets/styles/fonts.css" />
+    <title>GoT API app</title>
+    <link rel="stylesheet" href={primaryFonts} />
   </Helmet>
 );
 
