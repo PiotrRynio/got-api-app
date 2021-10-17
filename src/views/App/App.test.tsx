@@ -50,4 +50,24 @@ describe('App component', () => {
     const textFromHouseDetails = screen.getByText(/a heart gules enflamed proper charged/i);
     expect(textFromHouseDetails).toBeInTheDocument();
   });
+
+  it('should display character list page again, when click "home" link after entering on home details page', async () => {
+    // given
+    await render(<App />);
+    screen.queryByText(/Porridge/i);
+    const link = await screen.findByRole('link', {
+      name: 'Link to the house of Porridge. It is 1 in order.',
+    });
+    fireEvent.click(link);
+    await waitFor(() => screen.getByText(/NAME OF THE HOUSE/i));
+
+    //when
+    const homeLink = screen.getByRole('link', { name: /Home/i });
+    fireEvent.click(homeLink);
+    await waitFor(() => screen.getByText(/The Daughter of the Dusk/i));
+
+    // then
+    const textFromHouseDetails = screen.getByText(/High Septon, The High Sparrow/i);
+    expect(textFromHouseDetails).toBeInTheDocument();
+  });
 });
