@@ -2,12 +2,12 @@ export type Theme = {
   mixins: {
     typography: {
       button: any;
-      input: any;
       regular: any;
       heading2: any;
       heading4: any;
       overline: any;
     };
+    textInput: any;
   };
   fontFamily: { primary: string };
   letterSpacing: {

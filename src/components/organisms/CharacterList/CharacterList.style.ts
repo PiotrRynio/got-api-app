@@ -10,6 +10,16 @@ export const Wrapper = styled.section`
   padding: 0 16px;
 `;
 
+export const InputsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+`;
+
 export const CharacterListItemsWrapper = styled.div`
   overflow-y: scroll;
   width: 100%;

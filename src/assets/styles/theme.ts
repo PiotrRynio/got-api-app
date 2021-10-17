@@ -89,33 +89,33 @@ export const theme: Theme = {
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
       `,
-      input: css`
-        padding: 11px 16px;
-        border: 1px solid ${() => theme.colors.primaryDark};
-        border-radius: 8px;
-        line-height: 120%;
-        font-size: ${() => theme.fontSize.sm};
-        font-family: ${() => theme.fontFamily.primary};
-        color: ${() => theme.colors.lightHard};
-
-        &::placeholder {
-          color: ${() => theme.colors.primaryDark};
-        }
-
-        &:focus {
-          outline: none;
-        }
-
-        &--incorrect {
-          color: rgba(${() => theme.colors.redMedium}, 0.4);
-          border-color: ${() => theme.colors.redMedium};
-        }
-
-        &--incorrect::placeholder {
-          color: rgba(${() => theme.colors.redMedium}, 0.4);
-          border-color: ${() => theme.colors.redMedium};
-        }
-      `,
     },
+    textInput: css`
+      padding: 11px 8px 11px 16px;
+      border: 1px solid ${() => theme.colors.primary};
+      border-radius: 8px;
+      line-height: 120%;
+      font-size: ${() => theme.fontSize.md};
+      font-family: ${() => theme.fontFamily.primary};
+      color: ${() => theme.colors.primary};
+
+      &::placeholder {
+        color: rgba(${() => theme.colors.primaryDark}, 0.1);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &--incorrect {
+        color: rgba(${() => theme.colors.redMedium}, 0.4);
+        border-color: ${() => theme.colors.redMedium};
+      }
+
+      &--incorrect::placeholder {
+        color: rgba(${() => theme.colors.redMedium}, 0.4);
+        border-color: ${() => theme.colors.redMedium};
+      }
+    `,
   },
 };

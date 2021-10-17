@@ -1,5 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import { usePageParams } from 'hooks/usePageParams';
+import Typography from '../../atoms/Typography/Typography';
+import { TypographyTag } from '../../atoms/Typography/TypographyTags';
+import { StyledSelectInput } from '../PageSizeMenu/PageSizeMenu.styles';
 
 export const GenderMenu = () => {
   const { gender, setPageParams } = usePageParams();
@@ -12,14 +15,14 @@ export const GenderMenu = () => {
 
   return (
     <label>
-      Gender filter:
-      <select value={gender} name="pageSize" onChange={(event) => handleChange(event)}>
+      <Typography typographyTag={TypographyTag.OVERLINE}>Gender filter:</Typography>
+      <StyledSelectInput value={gender} name="pageSize" onChange={(event) => handleChange(event)}>
         {genderMenuItems.map(({ gender }) => (
           <option value={gender} key={gender}>
             {gender}
           </option>
         ))}
-      </select>
+      </StyledSelectInput>
     </label>
   );
 };

@@ -18,6 +18,7 @@ import {
   NoResultStatusWrapper,
   StyledNoResultStatusButton,
   StyledNoResultStatusHeader,
+  InputsWrapper,
 } from './CharacterList.style';
 
 const CharacterList = () => {
@@ -63,22 +64,17 @@ const CharacterList = () => {
 
   return (
     <Wrapper>
-      <div>
+      <InputsWrapper>
         <GenderMenu />
-      </div>
-      <div>
-        Culture:
         <CultureSearcher />
-      </div>
+        <PageSizeMenu />
+      </InputsWrapper>
       <CharacterListTableHeader />
       <FetchingStatus error={error} isLoading={isLoading} />
       <CharacterListItemsWrapper>
         {characterListItems()}
         {onResultsStatus()}
       </CharacterListItemsWrapper>
-      <div>
-        <PageSizeMenu />
-      </div>
       <Paginate />
     </Wrapper>
   );
