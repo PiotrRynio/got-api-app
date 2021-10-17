@@ -1,9 +1,7 @@
 import { useQuery, UseQueryResult } from 'react-query';
 import { CharacterListItemProps } from 'components/molecules/CharacterListItem/CharacterListItemProps';
 import { UseCharacterListPageProps } from './UseCharacterListPageProps';
-import { CharacterListPageItemDto } from './CharacterListPageItemDto';
 import { API_URL } from 'constant/apiUrl';
-import { fakeData } from '../../mocks/FakeDto/FakeData';
 import parseLinkHeader from 'parse-link-header';
 import { toCharacterListItemPropsFromDto } from './toCharacterListItemPropsFromDto';
 import { validateResponse } from '../validateResponse';
@@ -24,11 +22,6 @@ export const useCharacterListPage = ({
       const pagesCount = parsedLinkHeader ? parsedLinkHeader['last']['page'] : 0;
       await validateResponse(response);
       const fetchedData = await response.json();
-
-      // TODO: Remove this
-      // const pagesCount = 50;
-      // const fetchedData = fakeData;
-      // console.log(fetchedData);
 
       const characterListItems = fetchedData.map(toCharacterListItemPropsFromDto);
       return { characterListItems, meta: { pagesCount } };
