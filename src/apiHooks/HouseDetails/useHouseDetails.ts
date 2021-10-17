@@ -9,11 +9,17 @@ export const useHouseDetails = (
 ): UseQueryResult<{
   houseDetailsItem: HouseDetailsItemType;
 }> =>
-  useQuery([`HouseDetailsItem-${houseId}`], async () => {
-    const response = await fetch(`${API_URL}/houses/${houseId}`);
-    await validateResponse(response);
-    const fetchedData = await response.json();
+  useQuery(
+    [`HouseDetailsItem-${houseId}`],
+    async () => {
+      const response = await fetch(`${API_URL}/houses/${houseId}`);
+      await validateResponse(response);
+      const fetchedData = await response.json();
 
-    const houseDetailsItem = toHouseDetailsItemFromDto(fetchedData);
-    return { houseDetailsItem };
-  });
+      const houseDetailsItem = toHouseDetailsItemFromDto(fetchedData);
+      return { houseDetailsItem };
+    },
+    {
+      staleTime: 600000,
+    },
+  );

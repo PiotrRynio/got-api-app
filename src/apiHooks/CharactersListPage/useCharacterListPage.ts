@@ -27,6 +27,6 @@ export const useCharacterListPage = ({
       return { characterListItems, meta: { pagesCount } };
     },
     {
-      staleTime: 10000000, // TODO: reduce or delete value on production version
+      staleTime: 600000,
     },
   );
