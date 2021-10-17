@@ -9,14 +9,17 @@ import { validateResponse } from '../validateResponse';
 export const useCharacterListPage = ({
   page = 1,
   pageSize = 25,
+  gender = '',
 }: UseCharacterListPageProps): UseQueryResult<{
   characterListItems: CharacterListItemProps[];
   meta: { pagesCount: number };
 }> =>
   useQuery(
-    [`CharacterListPage-${page}-${pageSize}`],
+    [`CharacterListPage-${page}-${pageSize}-${gender}`],
     async () => {
-      const response = await fetch(`${API_URL}/characters?page=${page}&pageSize=${pageSize}`);
+      const response = await fetch(
+        `${API_URL}/characters?page=${page}&pageSize=${pageSize}&gender=${gender}`,
+      );
       const linkHeader = response.headers.get('Link');
       const parsedLinkHeader = linkHeader ? parseLinkHeader(linkHeader) : undefined;
       const pagesCount = parsedLinkHeader ? parsedLinkHeader['last']['page'] : 0;

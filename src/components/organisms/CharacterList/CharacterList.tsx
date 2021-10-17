@@ -20,14 +20,12 @@ const CharacterList = () => {
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
     pageSize: Number(pageSize),
+    gender: gender,
   });
 
   useEffect(() => {
     data && setPagesCount(data.meta.pagesCount);
   }, [data, setPagesCount]);
-
-  const genderFilter = (characterListItem: CharacterListItemProps) =>
-    gender === characterListItem.gender || (gender !== 'Male' && gender !== 'Female');
 
   const cultureFilter = (characterListItem: CharacterListItemProps) =>
     !culture ||
@@ -41,7 +39,6 @@ const CharacterList = () => {
   const characterListItems = () =>
     data &&
     data.characterListItems
-      .filter(genderFilter)
       .filter(cultureFilter)
       .map((characterListItem: CharacterListItemProps) => (
         <CharacterListItem {...characterListItem} key={characterListItem.id} />
