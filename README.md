@@ -22,6 +22,9 @@ Are you ready for Ice And Fire journey?
 - TypeScript
 - Regex
 - Styled Components
+- react testing library
+- jest-dom testing library
+- MSW - Mock Service Worker (API queries mocking)
 - Prettier
 - Husky (pre-commit)
 - lint-staged
