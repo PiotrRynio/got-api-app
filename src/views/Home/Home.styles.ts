@@ -6,5 +6,4 @@ export const Wrapper = styled.main`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 100%;
 `;

@@ -7,13 +7,21 @@ import { CharacterListItemProps } from 'components/molecules/CharacterListItem/C
 import CharacterListItem from 'components/molecules/CharacterListItem/CharacterListItem';
 import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
 import Paginate from 'components/molecules/Paginate/Paginate';
-import { Wrapper } from './CharacterList.style';
 import { useAppContext } from 'context/AppContext';
-import { PageSizeMenu } from '../../molecules/PageSizeMenu/PageSizeMenu';
-import { GenderMenu } from '../../molecules/GenderMenu/GenderMenu';
+import { PageSizeMenu } from 'components/molecules/PageSizeMenu/PageSizeMenu';
+import { GenderMenu } from 'components/molecules/GenderMenu/GenderMenu';
+import Typography from 'components/atoms/Typography/Typography';
+import { TypographyTag } from 'components/atoms/Typography/TypographyTags';
+import {
+  CharacterListItemsWrapper,
+  Wrapper,
+  NoResultStatusWrapper,
+  StyledNoResultStatusButton,
+  StyledNoResultStatusHeader,
+} from './CharacterList.style';
 
 const CharacterList = () => {
-  const { pageSize, page, gender, culture } = usePageParams();
+  const { pageSize, page, gender, culture, setPageParams } = usePageParams();
   const { setPagesCount } = useAppContext();
 
   // TODO: Add culture filtering in API when you are requesting api with only part of the culture name in the query - now it is empty list
@@ -37,6 +45,22 @@ const CharacterList = () => {
       <CharacterListItem {...characterListItem} key={characterListItem.id} />
     ));
 
+  const handleNoResultStatusButtonClick = () =>
+    setPageParams({ newPageNumber: 1, newGender: '', newCulture: '' });
+
+  const onResultsStatus = () =>
+    data &&
+    !characterListItems()?.length && (
+      <NoResultStatusWrapper>
+        <StyledNoResultStatusHeader role="status">No results!</StyledNoResultStatusHeader>
+        <Typography typographyTag={TypographyTag.REGULAR}>Change filtering options</Typography>
+        <Typography typographyTag={TypographyTag.REGULAR}>or type all culture name</Typography>
+        <StyledNoResultStatusButton onClick={handleNoResultStatusButtonClick}>
+          Reset all filter options
+        </StyledNoResultStatusButton>
+      </NoResultStatusWrapper>
+    );
+
   return (
     <Wrapper>
       <div>
@@ -48,7 +72,10 @@ const CharacterList = () => {
       </div>
       <CharacterListTableHeader />
       <FetchingStatus error={error} isLoading={isLoading} />
-      {characterListItems()}
+      <CharacterListItemsWrapper>
+        {characterListItems()}
+        {onResultsStatus()}
+      </CharacterListItemsWrapper>
       <div>
         <PageSizeMenu />
       </div>
