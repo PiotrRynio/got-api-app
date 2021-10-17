@@ -33,6 +33,14 @@ Are you ready for Ice And Fire journey?
 - Git & GitHub
 - IntelliJ
 
+
+###### TODO: 
+1. Add culture filtering in API when you are requesting api with only part of the culture name
+in the query - now it is empty list  If fetched list is filtering in app, then an empty table is 
+returned after typing only part of the culture name in the query. Both solutions are little UX - 
+API development is necessary.
+
+
 ## Running the project
 
 Running this project locally

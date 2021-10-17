@@ -10,15 +10,16 @@ export const useCharacterListPage = ({
   page = 1,
   pageSize = 25,
   gender = '',
+  culture = '',
 }: UseCharacterListPageProps): UseQueryResult<{
   characterListItems: CharacterListItemProps[];
   meta: { pagesCount: number };
 }> =>
   useQuery(
-    [`CharacterListPage-${page}-${pageSize}-${gender}`],
+    [`CharacterListPage-${page}-${pageSize}-${gender}-${culture}`],
     async () => {
       const response = await fetch(
-        `${API_URL}/characters?page=${page}&pageSize=${pageSize}&gender=${gender}`,
+        `${API_URL}/characters?page=${page}&pageSize=${pageSize}&gender=${gender}&culture=${culture}`,
       );
       const linkHeader = response.headers.get('Link');
       const parsedLinkHeader = linkHeader ? parseLinkHeader(linkHeader) : undefined;

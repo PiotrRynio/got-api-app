@@ -8,7 +8,6 @@ import CharacterListItem from 'components/molecules/CharacterListItem/CharacterL
 import { CharacterListTableHeader } from 'components/molecules/CharacterListTableHeader/CharacterListTableHeader';
 import Paginate from 'components/molecules/Paginate/Paginate';
 import { Wrapper } from './CharacterList.style';
-import { normalizeAndSquashText } from 'utils/normalizeAndSquashText';
 import { useAppContext } from 'context/AppContext';
 import { PageSizeMenu } from '../../molecules/PageSizeMenu/PageSizeMenu';
 import { GenderMenu } from '../../molecules/GenderMenu/GenderMenu';
@@ -17,34 +16,26 @@ const CharacterList = () => {
   const { pageSize, page, gender, culture } = usePageParams();
   const { setPagesCount } = useAppContext();
 
-  // TODO: Add culture filtering in API - now an empty table is returned after passing part of the culture name in the query
+  // TODO: Add culture filtering in API when you are requesting api with only part of the culture name in the query - now it is empty list
+  // If fetched list is filtering in app, then an empty table is returned after typing only part of the culture name in the query
+  // Both solutions are little UX - API development is necessary.
 
   const { isLoading, error, data } = useCharacterListPage({
     page: Number(page),
     pageSize: Number(pageSize),
     gender: gender,
+    culture: culture,
   });
 
   useEffect(() => {
     data && setPagesCount(data.meta.pagesCount);
   }, [data, setPagesCount]);
 
-  const cultureFilter = (characterListItem: CharacterListItemProps) =>
-    !culture ||
-    (characterListItem.culture &&
-      normalizeAndSquashText(characterListItem.culture).includes(
-        normalizeAndSquashText(culture),
-      )) ||
-    (!characterListItem.culture &&
-      normalizeAndSquashText('Unknown').includes(normalizeAndSquashText(culture)));
-
   const characterListItems = () =>
     data &&
-    data.characterListItems
-      .filter(cultureFilter)
-      .map((characterListItem: CharacterListItemProps) => (
-        <CharacterListItem {...characterListItem} key={characterListItem.id} />
-      ));
+    data.characterListItems.map((characterListItem: CharacterListItemProps) => (
+      <CharacterListItem {...characterListItem} key={characterListItem.id} />
+    ));
 
   return (
     <Wrapper>
