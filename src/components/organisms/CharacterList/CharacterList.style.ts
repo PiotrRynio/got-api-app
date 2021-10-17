@@ -40,6 +40,7 @@ export const StyledNoResultStatusButton = styled.button`
   margin: 30px 0;
   padding: 7px 15px;
   width: 120px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   border-radius: 30px;
   background-color: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.primary};

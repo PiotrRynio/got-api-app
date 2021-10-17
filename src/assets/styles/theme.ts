@@ -20,15 +20,14 @@ export const theme: Theme = {
     xxl: '1.5px',
   },
   colors: {
-    primary: '#67331E',
-    secondary: '#B9540C',
+    primary: '#4eadc5',
+    secondary: '#fff',
+    primaryDark: '#324b72',
     darkHard: '#000000',
-    darkMedium: '#331C0E',
-    darkSoft: '#67331E',
-    lightSoft: '#FFF190',
-    lightMedium: '#FCFEF0',
+    darkMedium: '#111',
+    lightMedium: '#fff',
     lightHard: '#FFF',
-    redMedium: '#DE212B',
+    redMedium: '#de212b',
   },
   fontFamily: {
     primary: `'Source Sans Pro', sans-serif`,
@@ -64,7 +63,7 @@ export const theme: Theme = {
       overline: css`
         font-size: ${() => theme.fontSize.sm};
         font-weight: ${() => theme.fontWeight.regular};
-        color: ${() => theme.colors.darkSoft};
+        color: ${() => theme.colors.darkMedium};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
         text-transform: uppercase;
@@ -92,7 +91,7 @@ export const theme: Theme = {
       `,
       input: css`
         padding: 11px 16px;
-        border: 1px solid ${() => theme.colors.lightSoft};
+        border: 1px solid ${() => theme.colors.primaryDark};
         border-radius: 8px;
         line-height: 120%;
         font-size: ${() => theme.fontSize.sm};
@@ -100,7 +99,7 @@ export const theme: Theme = {
         color: ${() => theme.colors.lightHard};
 
         &::placeholder {
-          color: ${() => theme.colors.lightSoft};
+          color: ${() => theme.colors.primaryDark};
         }
 
         &:focus {

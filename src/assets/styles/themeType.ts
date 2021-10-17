@@ -41,11 +41,10 @@ export type Theme = {
   };
   colors: {
     primary: string;
+    primaryDark: string;
     secondary: string;
     darkHard: string;
     darkMedium: string;
-    darkSoft: string;
-    lightSoft: string;
     lightMedium: string;
     lightHard: string;
     redMedium: string;

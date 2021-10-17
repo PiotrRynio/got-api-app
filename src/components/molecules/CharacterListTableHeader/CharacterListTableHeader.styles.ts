@@ -5,7 +5,7 @@ export const Wrapper = styled.section`
   min-height: 30px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.darkSoft};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
   background-color: ${({ theme }) => theme.colors.lightSoft};
 `;
 
