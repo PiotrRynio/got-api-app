@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import { GlobalStyles } from 'assets/styles/GlobalStyles';
@@ -23,10 +22,8 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
         <HelmetProvider>
           <InitialHelmet />
           <ThemeProvider theme={theme}>
-            <Router>
-              <GlobalStyles theme={theme} />
-              {children}
-            </Router>
+            <GlobalStyles theme={theme} />
+            {children}
           </ThemeProvider>{' '}
         </HelmetProvider>
       </AppProvider>

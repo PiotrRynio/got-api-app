@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'views/App/App';
 import reportWebVitals from 'reportWebVitals';
+import AppProviders from './providers/AppProviders';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <AppProviders>
+        <App />
+      </AppProviders>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );
