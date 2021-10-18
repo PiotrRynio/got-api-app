@@ -28,6 +28,7 @@ Are you ready for Ice And Fire journey?
 - Prettier
 - Husky (pre-commit)
 - lint-staged
+- RWD
 - Full Responsive
 - Clean Code
 - Git & GitHub
