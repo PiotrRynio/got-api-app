@@ -3,6 +3,7 @@ import { Theme } from './themeType';
 
 export const theme: Theme = {
   breakpoints: {
+    xxs: '400px',
     xs: '480px',
     sm: '560px',
     md: '768px',
@@ -55,10 +56,14 @@ export const theme: Theme = {
     typography: {
       regular: css`
         font-weight: ${() => theme.fontWeight.regular};
-        font-size: ${() => theme.fontSize.md};
+        font-size: ${() => theme.fontSize.xs};
         color: ${() => theme.colors.darkMedium};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
+
+        @media (min-width: ${() => theme.breakpoints.xxs}) {
+          font-size: ${() => theme.fontSize.md};
+        }
       `,
       overline: css`
         font-size: ${() => theme.fontSize.sm};
@@ -76,11 +81,15 @@ export const theme: Theme = {
         font-style: ${() => theme.fontStyle.normal};
       `,
       heading4: css`
-        font-size: ${() => theme.fontSize.md};
+        font-size: ${() => theme.fontSize.xs};
         font-weight: ${() => theme.fontWeight.bold};
         color: ${() => theme.colors.primary};
         font-family: ${() => theme.fontFamily.primary};
         font-style: ${() => theme.fontStyle.normal};
+
+        @media (min-width: ${() => theme.breakpoints.xxs}) {
+          font-size: ${() => theme.fontSize.md};
+        }
       `,
       button: css`
         font-size: ${() => theme.fontSize.md};

@@ -29,6 +29,7 @@ export type Theme = {
     xxl: string;
   };
   breakpoints: {
+    xxs: string;
     xl: string;
     md: string;
     sm: string;

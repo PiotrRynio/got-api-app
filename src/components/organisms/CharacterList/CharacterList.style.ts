@@ -7,7 +7,10 @@ export const Wrapper = styled.section`
   align-items: center;
   width: 100%;
   min-height: 100%;
-  padding: 0 16px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding: 0 16px;
+  }
 `;
 
 export const InputsWrapper = styled.div`
@@ -22,7 +25,7 @@ export const InputsWrapper = styled.div`
 `;
 
 export const CharacterListItemsWrapper = styled.div`
-  overflow-y: scroll;
+  overflow: scroll;
   width: 100%;
   height: 60vh;
 `;
