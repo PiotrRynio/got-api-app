@@ -8,7 +8,11 @@ export const Wrapper = styled.nav`
   margin: 20px 0 20px;
   ul {
     display: flex;
-    gap: 4px;
+    gap: 2px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.xxs}) {
+      gap: 4px;
+    }
   }
   li {
     ${({ theme }) => theme.mixins.typography.heading4};
