@@ -66,8 +66,8 @@ const CharacterList = () => {
     <Wrapper>
       <InputsWrapper>
         <GenderMenu />
-        <CultureSearcher />
         <PageSizeMenu />
+        <CultureSearcher />
       </InputsWrapper>
       <CharacterListTableHeader />
       <FetchingStatus error={error} isLoading={isLoading} />

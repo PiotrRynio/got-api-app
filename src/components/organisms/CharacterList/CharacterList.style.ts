@@ -15,6 +15,7 @@ export const InputsWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
   width: 100%;
   padding: 16px;
